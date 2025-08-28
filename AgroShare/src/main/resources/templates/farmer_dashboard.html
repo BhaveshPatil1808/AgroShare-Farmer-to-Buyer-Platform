@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Farmer Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f4f9f4, #e6f4ea);
+        }
+        .dashboard-card {
+            border-radius: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+        }
+        .metric-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        .metric-card h3 {
+            font-weight: 700;
+            color: #28a745;
+        }
+        .btn-custom {
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 1.2rem;
+            transition: 0.2s ease-in-out;
+            font-weight: 600;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+        }
+        .logout-btn {
+            border-radius: 30px;
+            padding: 12px 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1 class="text-success display-4">Dashboard</h1>
+        <a th:href="@{/farmer/logout}" class="btn btn-outline-danger logout-btn">
+            <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </a>
+    </div>
+
+    <div class="card dashboard-card shadow-lg mb-5 text-center p-4">
+        <div class="card-body">
+            <h2 class="card-title mb-3">👨‍🌾 Welcome, <span th:text="${farmer.name}"></span>!</h2>
+            <p class="lead text-muted">A quick overview of your farm's activity.</p>
+            <hr class="my-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <p class="mb-1"><i class="fas fa-envelope text-primary me-2"></i> <strong>Email:</strong> <span th:text="${farmer.email}"></span></p>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-1"><i class="fas fa-map-marker-alt text-success me-2"></i> <strong>Location:</strong> <span th:text="${farmer.location}"></span></p>
+                </div>
+                <div class="col-md-4">
+                    <p class="mb-1"><i class="fas fa-phone text-info me-2"></i> <strong>Contact:</strong> <span th:text="${farmer.contact}"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="mb-4 text-secondary">Your Farm's Performance</h3>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="metric-card shadow-sm">
+                <i class="fas fa-box fa-3x text-success mb-3"></i>
+                <h3 class="display-5">120</h3> <!-- static -->
+                <p class="text-muted">Total Products Listed</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="metric-card shadow-sm">
+                <i class="fas fa-shopping-cart fa-3x text-primary mb-3"></i>
+                <h3 class="display-5">24</h3> <!-- static -->
+                <p class="text-muted">Pending Orders</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="metric-card shadow-sm">
+                <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                <h3 class="display-5">7</h3> <!-- static -->
+                <p class="text-muted">New Reviews</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <a th:href="@{/farmer/myProducts}" class="btn btn-success btn-lg w-100 btn-custom shadow-sm">
+                <i class="fas fa-box me-2"></i> Manage My Products
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a th:href="@{/farmer/myOrders}" class="btn btn-primary btn-lg w-100 btn-custom shadow-sm">
+                <i class="fas fa-shopping-cart me-2"></i> View My Orders
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a th:href="@{/farmer/addProduct}" class="btn btn-warning btn-lg w-100 btn-custom shadow-sm">
+                <i class="fas fa-plus me-2"></i> Add New Product
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

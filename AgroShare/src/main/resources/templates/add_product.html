@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #e6f4ea, #f4f9f4);
+            font-family: 'Arial', sans-serif;
+        }
+        .form-container {
+            max-width: 650px;
+            margin: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background: #28a745;
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid #218838;
+        }
+        .card-header h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .card-body {
+            padding: 2.5rem;
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            padding: 0.75rem 1.25rem;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+            border-color: #28a745;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+        .btn-secondary {
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+        }
+        .input-group-text {
+            border-radius: 10px 0 0 10px;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+        label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <div class="card form-container shadow-lg">
+        <div class="card-header">
+            <h3><i class="fas fa-seedling me-2"></i> Add a New Product</h3>
+            <p class="lead mb-0 mt-2">Fill in the details to list your crop.</p>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/farmer/addProduct}" method="post" th:object="${product}">
+                
+                <div class="mb-4">
+                    <label class="form-label">Product Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-leaf"></i></span>
+                        <input type="text" th:field="*{name}" class="form-control" placeholder="e.g., Organic Apples" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Product Type</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                        <input type="text" th:field="*{type}" class="form-control" placeholder="e.g., Fruit, Vegetable, Grain" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Price per Unit</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                        <input type="number" th:field="*{price}" step="0.01" class="form-control" placeholder="e.g., 2.50" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Available Quantity</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-box"></i></span>
+                        <input type="number" th:field="*{quantity}" class="form-control" placeholder="e.g., 50 kg" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Status</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-check-circle"></i></span>
+                        <select th:field="*{status}" class="form-select">
+                            <option value="Available">Available</option>
+                            <option value="Out of Stock">Out of Stock</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="fas fa-upload me-2"></i> Save Product
+                    </button>
+                    <a th:href="@{/farmer/myProducts}" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-times me-2"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

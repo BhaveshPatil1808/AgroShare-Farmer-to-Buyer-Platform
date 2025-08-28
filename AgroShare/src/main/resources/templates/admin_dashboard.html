@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #e6f4ea, #dff0d8);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .container {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .dashboard-card {
+            border-radius: 20px;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .btn-custom {
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 10px 25px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .logout-btn {
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1 class="text-secondary display-4 fw-bold">Admin Dashboard</h1>
+        <a th:href="@{/admin/login}" class="btn btn-outline-danger logout-btn">
+            <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </a>
+    </div>
+    <div class="row g-4 mt-4">
+        <div class="col-md-4">
+            <div class="card dashboard-card text-center p-4">
+                <div class="card-icon text-success">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Farmers</h5>
+                <p class="text-muted">Oversee all farmer accounts and listings.</p>
+                <a th:href="@{/admin/farmers}" class="btn btn-success btn-custom mt-auto">
+                    Manage Farmers
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card dashboard-card text-center p-4">
+                <div class="card-icon text-primary">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Buyers</h5>
+                <p class="text-muted">Handle buyer profiles and manage user access.</p>
+                <a th:href="@{/admin/buyers}" class="btn btn-primary btn-custom mt-auto">
+                    Manage Buyers
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card dashboard-card text-center p-4">
+                <div class="card-icon text-warning">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Transactions</h5>
+                <p class="text-muted">Review all orders and product transactions.</p>
+                <a th:href="@{/admin/orders}" class="btn btn-warning btn-custom mt-auto">
+                    View Transactions
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

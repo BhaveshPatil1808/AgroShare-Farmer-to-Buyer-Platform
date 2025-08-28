@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f4f9f4, #e6f4ea);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .container {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: #34495e;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 20px 20px 0 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .table-responsive {
+            border-radius: 0 0 20px 20px;
+            overflow: hidden;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+            font-weight: 500;
+            padding: 1rem;
+        }
+        .table thead th {
+            background-color: #588157;
+            color: white;
+            border: none;
+        }
+        .table tbody tr:hover {
+            background-color: #f0f8ff;
+        }
+        .status-badge {
+            font-weight: 700;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .badge-pending { background-color: #ffc107; color: #664d03; }
+        .badge-accepted { background-color: #28a745; color: white; }
+        .badge-shipped { background-color: #17a2b8; color: white; }
+        .badge-delivered { background-color: #588157; color: white; }
+        .badge-cancelled { background-color: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary display-4 fw-bold">My Orders <i class="fas fa-shopping-basket"></i></h1>
+        <a th:href="@{/buyer/dashboard}" class="btn btn-outline-secondary btn-lg">
+            <i class="fas fa-arrow-left me-2"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Your recent order history
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="o : ${orders}">
+                            <td th:text="${o.id}"></td>
+                            <td th:text="${o.product.name}"></td>
+                            <td th:text="${o.quantity}"></td>
+                            <td th:text="${o.totalPrice}"></td>
+                            <td>
+                                <span class="status-badge" 
+                                      th:classappend="${o.status == 'PENDING' ? 'badge-pending' : 
+                                                      (o.status == 'ACCEPTED' ? 'badge-accepted' : 
+                                                      (o.status == 'SHIPPED' ? 'badge-shipped' : 
+                                                      (o.status == 'DELIVERED' ? 'badge-delivered' : 'badge-cancelled')))}">
+                                    <span th:text="${o.status}"></span>
+                                </span>
+                            </td>
+                            <td th:text="${o.orderDate}"></td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(orders)}">
+                            <td colspan="6" class="text-center text-muted p-4">You have not placed any orders yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
