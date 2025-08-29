@@ -10,10 +10,15 @@ AgroShare is a role-based Spring Boot web application that connects farmers dire
 
 📌 Features
 👨‍🌾 Farmer Module: Register, manage profile, list crops & set prices
+
 🛒 Buyer Module: Browse, request, and purchase products
+
 📊 Admin Dashboard: Monitor users, products & transactions
+
 🔍 Search & Filter: Find crops by category, price, or location
+
 🔐 Role-based Authentication: Farmer | Buyer | Admin
+
 💬 Direct Communication: Seamless farmer–buyer interaction
 
 🛠️ Tech Stack
