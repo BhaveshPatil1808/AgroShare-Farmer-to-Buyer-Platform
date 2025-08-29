@@ -30,6 +30,16 @@ AgroShare is a role-based Spring Boot web application that connects farmers dire
 | **Server**     | Apache Tomcat (embedded)                            |
 | **Language**   | Java 8+                                             |
 
+Configure MySQL Database
+
+Create a database named agroshare_db
+
+Update application.properties:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/agroshare_db
+spring.datasource.username=your-username
+spring.datasource.password=your-password
+spring.jpa.hibernate.ddl-auto=update
 
 
 📸 Screenshots
