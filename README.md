@@ -21,14 +21,15 @@ AgroShare is a role-based Spring Boot web application that connects farmers dire
 
 💬 Direct Communication: Seamless farmer–buyer interaction
 
-🛠️ Tech Stack
-Layer	                                                  Technology Used
-Backend	                                              Spring Boot, Spring MVC, Spring Data JPA, Hibernate
-Frontend	                                            Thymeleaf, Bootstrap, HTML5, CSS3
-Database	                                            MySQL
-Build Tool	                                          Maven
-Server	                                              Apache Tomcat (embedded) 
-Language	                                            Java 8+
+| Layer          | Technology Used                                     |
+| -------------- | --------------------------------------------------- |
+| **Backend**    | Spring Boot, Spring MVC, Spring Data JPA, Hibernate |
+| **Frontend**   | Thymeleaf, Bootstrap, HTML5, CSS3                   |
+| **Database**   | MySQL                                               |
+| **Build Tool** | Maven                                               |
+| **Server**     | Apache Tomcat (embedded)                            |
+| **Language**   | Java 8+                                             |
+
 
 
 📸 Screenshots
